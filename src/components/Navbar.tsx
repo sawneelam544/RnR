@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, MapPin, Phone, User } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const navItems = [
     { name: "Destinations", href: "#destinations" },
@@ -47,7 +49,7 @@ const Navbar = () => {
               <Phone className="w-4 h-4" />
               Contact
             </Button>
-            <Button variant="nature" size="sm">
+            <Button variant="nature" size="sm" onClick={() => navigate('/login')}>
               <User className="w-4 h-4" />
               Login
             </Button>
@@ -84,7 +86,7 @@ const Navbar = () => {
                   <Phone className="w-4 h-4" />
                   Contact
                 </Button>
-                <Button variant="nature" size="sm" className="justify-start">
+                <Button variant="nature" size="sm" className="justify-start" onClick={() => { setIsOpen(false); navigate('/login'); }}>
                   <User className="w-4 h-4" />
                   Login
                 </Button>
